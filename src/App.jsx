@@ -238,7 +238,8 @@ function App() {
   };
 
   return (
-    <>      <nav className={`flex flex-wrap items-center justify-between p-4 bg-white text-white shadow-md sticky top-0 z-50 bg-white text-gray-800 transition-colors duration-300 ${darkMode ? 'dark bg-gray-800 text-white' : ''}`}  role="navigation" aria-label="Menu principal">
+    <>      
+    <nav className={`flex flex-wrap items-center justify-between p-4  shadow-md sticky top-0 z-50 transition-colors duration-300 ${darkMode ? ' bg-gray-800 text-white' : 'bg-white text-gray-800 '}`}  role="navigation" aria-label="Menu principal">
     <div className="flex items-center space-x-4">
       <img src="logo.webp" alt="Logo EST Oujda" className="h-20 w-40 w-auto" />
          </div>
@@ -264,7 +265,7 @@ function App() {
         </svg>
       </button>
       <svg width="20px" height="20px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="languageIconTitle"  stroke="#0000ff" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#0000ff"> <title id="languageIconTitle">Language</title> <circle cx="12" cy="12" r="10"/> <path stroke-linecap="round" d="M12,22 C14.6666667,19.5757576 16,16.2424242 16,12 C16,7.75757576 14.6666667,4.42424242 12,2 C9.33333333,4.42424242 8,7.75757576 8,12 C8,16.2424242 9.33333333,19.5757576 12,22 Z"/> <path stroke-linecap="round" d="M2.5 9L21.5 9M2.5 15L21.5 15"/> </svg>
-      <select id="languageSelector" className={`bg-white text-blue-700 border border-gray-300 px-4 py-2 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ''}`} value={language} onChange={changeLanguageHandler}>
+      <select id="languageSelector" className={` border border-gray-300 px-4 py-2 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-blue-700'}`} value={language} onChange={changeLanguageHandler}>
         <option value="fr">Français</option>
         <option value="en">English</option>
         <option value="de">Deutsch</option>
@@ -295,7 +296,7 @@ function App() {
         </svg>
       </button>
       <svg width="20px" height="20px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="languageIconTitle"  stroke="#0000ff" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#0000ff"> <title id="languageIconTitle">Language</title> <circle cx="12" cy="12" r="10"/> <path stroke-linecap="round" d="M12,22 C14.6666667,19.5757576 16,16.2424242 16,12 C16,7.75757576 14.6666667,4.42424242 12,2 C9.33333333,4.42424242 8,7.75757576 8,12 C8,16.2424242 9.33333333,19.5757576 12,22 Z"/> <path stroke-linecap="round" d="M2.5 9L21.5 9M2.5 15L21.5 15"/> </svg>
-      <select id="languageSelector" className={`bg-white  text-sm text-blue-700 border border-gray-300 px-2 py-1 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : ''}`} value={language} onChange={changeLanguageHandler}>
+      <select id="languageSelector" className={` text-sm  border border-gray-300 px-2 py-1 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-blue-700  '}`} value={language} onChange={changeLanguageHandler}>
         <option value="fr">Français</option>
         <option value="en">English</option>
         <option value="de">Deutsch</option>
@@ -310,9 +311,9 @@ function App() {
       <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
         {translations[language].loginTitle}
       </h2>
-      <form id="loginForm" className={`bg-white p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : ''}`} noValidate>
+      <form id="loginForm" className={` p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : 'bg-white'}`} noValidate>
         <div className="mb-4">
-          <label htmlFor="email" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+          <label htmlFor="email" className={`block font-semibold mb-2 ${darkMode ? 'text-gray-200' : ' text-gray-700'}`}>
             {translations[language].Email}
           </label>
           <input 
@@ -326,7 +327,7 @@ function App() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="password" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+          <label htmlFor="password" className={`block  font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
             {translations[language].Password}
           </label>
           <input 
@@ -349,14 +350,14 @@ function App() {
     </div>
   </section>}
   {showRegister && (
-      <section id="register" className={`h-screen w-full py-20 bg-gray-50 ${darkMode ? ' bg-gray-800 text-white ' : ''}`}>
+      <section id="register" className={`h-screen w-full py-20  ${darkMode ? ' bg-gray-800 text-white ' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
             {translations[language].RegistreTitle}
           </h2>
-          <form id="registerForm" className={`bg-white p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : ''}`} noValidate>
+          <form id="registerForm" className={` p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : 'bg-white'}`} noValidate>
             <div className="mb-4">
-              <label htmlFor="username" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+              <label htmlFor="username" className={`block  font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 {translations[language].Nom}
               </label>
               <input 
@@ -369,7 +370,7 @@ function App() {
             </div>
   
             <div className="mb-4">
-              <label htmlFor="emailRegister" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+              <label htmlFor="emailRegister" className={`block  font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 {translations[language].Email}
               </label>
               <input 
@@ -382,7 +383,7 @@ function App() {
             </div>
   
             <div className="mb-4">
-              <label htmlFor="passwordRegister" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+              <label htmlFor="passwordRegister" className={`block  font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 {translations[language].Password}
               </label>
               <input 
@@ -394,7 +395,7 @@ function App() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="passwordRegister" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>
+              <label htmlFor="passwordRegister" className={`block  font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 {translations[language].ConfirmPassword}
               </label>
               <input 
@@ -416,7 +417,7 @@ function App() {
       </section>
     )}
    {!showLogin && !showRegister && (
-      <div className={`bg-white text-gray-800 transition-colors duration-300 ${darkMode ? ' bg-gray-800 text-white' : ''}`} aria-label="Page principale Waselni m3ak">
+      <div className={` text-gray-800 transition-colors duration-300 ${darkMode ? ' bg-gray-800 text-white' : 'bg-white'}`} aria-label="Page principale Waselni m3ak">
 
      
 
@@ -435,7 +436,7 @@ function App() {
         </section>
 
 
-        <section id="features" className={`py-16 bg-white ${darkMode ? 'bg-gray-800 text-white' : ''}`}>
+        <section id="features" className={`py-16 ${darkMode ? 'bg-gray-800 text-white' : ' bg-white'}`}>
           <div className="container mx-auto px-6 text-center">
             <h2 className={`text-5xl md:text-5xl font-extrabold text-black  mb-4 leading-tight  ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="featuresTitle">{translations[language].featuresTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -445,7 +446,7 @@ function App() {
                
                 </div>   
                 <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-blue-400' : ''}`} id="feature1Title">{translations[language].feature1Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="feature1Desc">{translations[language].feature1Desc}</p>
+                <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature1Desc">{translations[language].feature1Desc}</p>
               </div>
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
               <div className="w-full h-1/2">
@@ -453,70 +454,70 @@ function App() {
                 </div>
 
                 <h3 className={`text-xl font-semibold text-green-700 mb-4 ${darkMode ? 'text-green-400' : ''}`} id="feature2Title">{translations[language].feature2Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="feature2Desc">{translations[language].feature2Desc}</p>
+                <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature2Desc">{translations[language].feature2Desc}</p>
               </div>
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
               <div className="w-full h-1/2">
               <img src="https://www.klarahr.com/blog/wp-content/uploads/2024/10/6422bf4379a047d3713c91f8_62c55054045d30827bd08057_systeCC80me20d27eCC81valuation202.png" className={`h-full w-full rounded-lg  text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
               </div>
                 <h3 className={`text-xl font-semibold text-yellow-700 mb-4 ${darkMode ? 'text-yellow-400' : ''}`} id="feature3Title">{translations[language].feature3Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="feature3Desc">{translations[language].feature3Desc}</p>
+                <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`} id="feature3Desc">{translations[language].feature3Desc}</p>
               </div>
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
               <div className="w-full h-1/2">
               <img src="https://www.icoderzsolutions.com/blog/wp-content/uploads/2019/03/Intuitive-UI-For-Gratifying-UX-Blog-Post-.jpg" className={`h-full w-full rounded-lg text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
               </div>
                 <h3 className={`text-xl font-semibold text-red-700 mb-4 ${darkMode ? 'text-red-400' : ''}`} id="feature4Title">{translations[language].feature4Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="feature4Desc">{translations[language].feature4Desc}</p>
+                <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature4Desc">{translations[language].feature4Desc}</p>
               </div>
             </div>
           </div>
         </section>
         
-        <section id="objectives" className={`py-16 bg-gray-50 ${darkMode ? 'bg-gray-800 text-white' : ''}`}>
+        <section id="objectives" className={`py-16 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-50 '}`}>
           <div className="container mx-auto px-6 text-center">
             <h2 className={`text-5xl md:text-5xl font-extrabold text-black  mb-4 leading-tight  ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="objectivesTitle">{translations[language].objectivesTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
-              <div className={`bg-white p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+              <div className={`p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : 'bg-white '}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-blue-600 mb-4 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 1.343-3 3v5h6v5a3 3 0 01-3 3z" />
                 </svg>
-                <h3 className={`text-xl font-semibold mb-2 text-blue-700 ${darkMode ? 'text-blue-400' : ''}`} id="objective1Title">{translations[language].objective1Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="objective1Desc">{translations[language].objective1Desc}</p>
+                <h3 className={`text-xl font-semibold mb-2  ${darkMode ? 'text-blue-400' : 'text-blue-700'}`} id="objective1Title">{translations[language].objective1Title}</h3>
+                <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`} id="objective1Desc">{translations[language].objective1Desc}</p>
               </div>
-              <div className={`bg-white p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+              <div className={`p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : 'bg-white '}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-green-600 mb-4 ${darkMode ? 'text-green-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 0a3 3 0 013 3v5H9v-5a3 3 0 013-3z" />
                 </svg>
                 <h3 className={`text-xl font-semibold mb-2 text-green-700 ${darkMode ? 'text-green-400' : ''}`} id="objective2Title">{translations[language].objective2Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="objective2Desc">{translations[language].objective2Desc}</p>
+                <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`}  id="objective2Desc">{translations[language].objective2Desc}</p>
               </div>
-              <div className={`bg-white p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+              <div className={`p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : 'bg-white '}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-yellow-600 mb-4 ${darkMode ? 'text-yellow-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 12V8l4 4m0 0l4-4m-4 4l-4-4" />
                 </svg>
                 <h3 className={`text-xl font-semibold mb-2 text-yellow-700 ${darkMode ? 'text-yellow-400' : ''}`} id="objective3Title">{translations[language].objective3Title}</h3>
-                <p className={`text-gray-600 ${darkMode ? 'text-gray-200' : ''}`} id="objective3Desc">{translations[language].objective3Desc}</p>
+                <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`}  id="objective3Desc">{translations[language].objective3Desc}</p>
               </div>
             </div>
           </div>
         </section>
-        <section id="contactUs" className={`py-20 bg-gray-50 ${darkMode ? 'bg-gray-800 text-white' : ''}`}>
+        <section id="contactUs" className={`py-20  ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-50'}`}>
           <div className="container mx-auto px-6 max-w-lg">
-            <h2 className={`text-3xl font-extrabold text-gray-800  mb-8 text-center ${darkMode ? ' text-white' : ''}`}>{translations[language].contactNous}</h2>
-            <form id="contactForm" className={`bg-white p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : ''}`} noValidate>
+            <h2 className={`text-3xl font-extrabold   mb-8 text-center ${darkMode ? ' text-white' : 'text-gray-800'}`}>{translations[language].contactNous}</h2>
+            <form id="contactForm" className={` p-8 rounded-lg shadow-md ${darkMode ? 'bg-gray-700 text-white' : 'bg-white'}`} noValidate>
               <div className="mb-4">
-                <label htmlFor="name" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>{translations[language].Nom}</label>
+                <label htmlFor="name" className={`block font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700 '}`}>{translations[language].Nom}</label>
                 <input type="text" id="name" name="name" required className={`w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${darkMode ? 'bg-gray-800 border-gray-600 focus:ring-blue-400 text-white' : ''}`} />
                 <p className="text-red-600 text-sm mt-1 hidden" id="nameError">Veuillez entrer votre nom.</p>
               </div>
               <div className="mb-4">
-                <label htmlFor="email" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>{translations[language].Email}</label>
+                <label htmlFor="email" className={`block font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700 '}`}>{translations[language].Email}</label>
                 <input type="email" id="email" name="email" required className={`w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${darkMode ? 'bg-gray-800 border-gray-600 focus:ring-blue-400 text-white' : ''}`} />
                 <p className="text-red-600 text-sm mt-1 hidden" id="emailError">Veuillez entrer un email valide.</p>
               </div>
               <div className="mb-4">
-                <label htmlFor="message" className={`block text-gray-700 font-semibold mb-2 ${darkMode ? 'text-gray-200' : ''}`}>{translations[language].Message}</label>
+                <label htmlFor="message" className={`block font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-700 '}`}>{translations[language].Message}</label>
                 <textarea id="message" name="message" rows="4" required className={`w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${darkMode ? 'bg-gray-800 border-gray-600 focus:ring-blue-400 text-white' : ''}`}></textarea>
                 <p className="text-red-600 text-sm mt-1 hidden" id="messageError">Veuillez entrer un message.</p>
               </div>
@@ -530,7 +531,7 @@ function App() {
           </div>
         </section>
 
-        <footer className={`bg-white text-gray-800 py-6 mt-16 shadow-inner ${darkMode ? 'bg-gray-900 text-white' : ''}`}>
+        <footer className={` py-6 mt-16 shadow-inner ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
           <div className="container mx-auto px-6 text-center">
             <p>{translations[language].copyright}</p>
           </div>
