@@ -306,7 +306,7 @@ function App() {
       <button className={`bg-blue-700 hover:bg-blue-600 text-sm text-white font-bold px-2 py-1 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="loginButton" onClick={Logintoggle}>{translations[language].Login}</button>
       <button className={`bg-blue-700 hover:bg-blue-600 text-sm  text-white font-bold px-2 py-1 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="registerButton" onClick={Registertoggle}>{translations[language].Registre}</button>
     </div>
-  </div> {showLogin && <section id="login" className={`h-screen w-full py-20 bg-gray-50 ${darkMode ? 'bg-gray-800 text-white' : ''}`}>
+  </div> {showLogin && <section id="login" className={`h-screen w-full py-20 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-50 '}`}>
     <div className="container mx-auto px-6 max-w-lg">
       <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
         {translations[language].loginTitle}
