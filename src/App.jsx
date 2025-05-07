@@ -241,7 +241,7 @@ function App() {
     <>      
     <nav className={`flex flex-wrap items-center justify-between p-4  shadow-md sticky top-0 z-50 transition-colors duration-300 ${darkMode ? ' bg-gray-800 text-white' : 'bg-white text-gray-800 '}`}  role="navigation" aria-label="Menu principal">
     <div className="flex items-center space-x-4">
-      <img src="logo.webp" alt="Logo EST Oujda" className="h-20 w-40 w-auto" />
+      <img src="logo.png" alt="Logo EST Oujda" className="h-20 rounded-full w-20 " />
          </div>
     <button id="hamburger" aria-label="Toggle menu" aria-expanded={isMobileMenuOpen} aria-controls="mobileMenu" className="xl:hidden focus:outline-none" onClick={toggleMobileMenu}>
       <svg xmlns="http://www.w3.org/2000/svg" className={`h-8 w-8 text-blue-700 ${darkMode ? 'text-white' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -272,8 +272,8 @@ function App() {
         <option value="es">Español</option>
         <option value="ar">العربية</option>
       </select>
-      <button className={`bg-blue-700 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="loginButton" onClick={Logintoggle}>{translations[language].Login}</button>
-      <button className={`bg-blue-700 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="registerButton" onClick={Registertoggle}>{translations[language].Registre}</button>
+      <button className={`border border-gray-300 px-4 py-2 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-blue-700'}`}  id="loginButton" onClick={Logintoggle}>{translations[language].Login}</button>
+      <button className={`border border-gray-300 px-4 py-2 rounded-full ${darkMode ? 'bg-gray-700 text-white border-gray-600' : 'bg-white text-blue-700'}`}  id="registerButton" onClick={Registertoggle}>{translations[language].Registre}</button>
     </div>
     </div>
    
@@ -307,6 +307,8 @@ function App() {
       <button className={`bg-blue-700 hover:bg-blue-600 text-sm  text-white font-bold px-2 py-1 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="registerButton" onClick={Registertoggle}>{translations[language].Registre}</button>
     </div>
   </div> {showLogin && <section id="login" className={`h-screen w-full py-20 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-50 '}`}>
+  <a href="#home" onClick={()=>setShowLogin(!showLogin)} className=" float-right mr-20 hover:text-green-600 hover:text-green-400 transition">✖ </a>
+    
     <div className="container mx-auto px-6 max-w-lg">
       <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
         {translations[language].loginTitle}
@@ -351,6 +353,7 @@ function App() {
   </section>}
   {showRegister && (
       <section id="register" className={`h-screen w-full py-20  ${darkMode ? ' bg-gray-800 text-white ' : 'bg-gray-50'}`}>
+          <a onClick={()=>setShowRegister(!showRegister)} href="#home" className=" float-right mr-20 hover:text-green-600 hover:text-green-400 transition">✖ </a>
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
             {translations[language].RegistreTitle}
@@ -427,10 +430,10 @@ function App() {
             <div className="md:w-1/2 text-center md:text-left">
               <h1 className={`text-5xl md:text-5xl font-extrabold text-black  mb-4 leading-tight  ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="heroTitle">{translations[language].heroTitle}</h1>
               <p className={`text-lg md:text-xl font-extrabold text-black  mb-4 leading-tight  my-8   ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="heroSubtitle">{translations[language].heroSubtitle}</p>
-              <a href="#features" className={`inline-block bg-blue-200 text-black my-8   font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="heroButton">{translations[language].heroButton}</a>
+              <a href="#features" className={`inline-block bg-blue-400 text-white text-black my-10   font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-300 transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="heroButton">{translations[language].heroButton}</a>
             </div>
-            <div className="md:w-full mt-10 md:mt-0 flex justify-center">
-              <img src="images.png" alt="Mockup de l'application mobile" className="w-full h-full rounded-lg shadow-lg" loading="lazy" />
+            <div className="flex justify-end   ">
+              <img src="image.png" alt="Mockup de l'application mobile" style={{height:"500px", width:"600px"} }className=" rounded-lg shadow-lg" loading="lazy" />
             </div>
           </div>
         </section>
@@ -439,7 +442,7 @@ function App() {
         <section id="features" className={`py-16 ${darkMode ? 'bg-gray-800 text-white' : ' bg-white'}`}>
           <div className="container mx-auto px-6 text-center">
             <h2 className={`text-5xl md:text-5xl font-extrabold text-black  mb-4 leading-tight  ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="featuresTitle">{translations[language].featuresTitle}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
                 <div className="w-full h-1/2">
                 <img src="https://www.ionos.fr/digitalguide/fileadmin/DigitalGuide/E-Mail/e-mail-postfach-c.jpg" className={`h-full w-full rounded-lg  text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
@@ -453,21 +456,15 @@ function App() {
               <img src="https://www.weblex.fr/sites/default/files/images/flux_actus/applimobile.jpg" className={` h-full w-full rounded-lg text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
                 </div>
 
-                <h3 className={`text-xl font-semibold text-green-700 mb-4 ${darkMode ? 'text-green-400' : ''}`} id="feature2Title">{translations[language].feature2Title}</h3>
+                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-green-400' : ''}`} id="feature2Title">{translations[language].feature2Title}</h3>
                 <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature2Desc">{translations[language].feature2Desc}</p>
               </div>
-              <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
-              <div className="w-full h-1/2">
-              <img src="https://www.klarahr.com/blog/wp-content/uploads/2024/10/6422bf4379a047d3713c91f8_62c55054045d30827bd08057_systeCC80me20d27eCC81valuation202.png" className={`h-full w-full rounded-lg  text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
-              </div>
-                <h3 className={`text-xl font-semibold text-yellow-700 mb-4 ${darkMode ? 'text-yellow-400' : ''}`} id="feature3Title">{translations[language].feature3Title}</h3>
-                <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`} id="feature3Desc">{translations[language].feature3Desc}</p>
-              </div>
+            
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
               <div className="w-full h-1/2">
               <img src="https://www.icoderzsolutions.com/blog/wp-content/uploads/2019/03/Intuitive-UI-For-Gratifying-UX-Blog-Post-.jpg" className={`h-full w-full rounded-lg text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
               </div>
-                <h3 className={`text-xl font-semibold text-red-700 mb-4 ${darkMode ? 'text-red-400' : ''}`} id="feature4Title">{translations[language].feature4Title}</h3>
+                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-red-400' : ''}`} id="feature4Title">{translations[language].feature4Title}</h3>
                 <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature4Desc">{translations[language].feature4Desc}</p>
               </div>
             </div>
