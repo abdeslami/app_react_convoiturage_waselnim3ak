@@ -1,9 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [language, setLanguage] = useState('fr');
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+const supportedLanguages = ['fr', 'en', 'ar', 'es', 'de'];
+
+const [language, setLanguage] = useState(() => {
+  try {
+    const savedLang = localStorage.getItem('language');
+    if (savedLang && supportedLanguages.includes(savedLang)) {
+      return savedLang;
+    }
+
+    const browserLang = navigator.language?.split('-')[0] || 'fr';
+    const defaultLang = supportedLanguages.includes(browserLang) ? browserLang : 'fr';
+    localStorage.setItem('language', defaultLang);
+    return defaultLang;
+  } catch (error) {
+    // En cas d'erreur (ex: localStorage inaccessible), fallback en français
+    return 'fr';
+  }
+});
+useEffect(() => {
+  localStorage.setItem('language', language);
+}, [language]);
+
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -250,13 +272,13 @@ function App() {
     </button>
     <div className={`hidden xl:flex space-x-8 text-black font-semibold ${darkMode ? 'text-white' : ''}`} id="desktopMenu">
       <div className="flex items-center space-x-4">
-        <a href="#home" className="hover:text-green-600 hover:text-green-400 transition">{translations[language].heroTitle}</a>
-      <a href="#features" className="hover:text-green-600 hover:text-green-400 transition">{translations[language].featuresTitle}</a>
-      <a href="#objectives" className="hover:text-green-600 hover:text-green-400 transition">{translations[language].objectivesTitle}</a>
-      <a href="#gallery" className="hover:text-green-600 hover:text-green-400 transition">{translations[language].MaquettesTitle}</a>
-      <a href="#contactUs" className="hover:text-green-600 hover:text-green-400 transition">{translations[language].ContactTitle}</a>
+        <a href="#home" className="hover:text-blue-600 hover:text-blue-400 transition">{translations[language].heroTitle}</a>
+      <a href="#features" className="hover:text-blue-600 hover:text-blue-400 transition">{translations[language].featuresTitle}</a>
+      <a href="#objectives" className="hover:text-blue-600 hover:text-blue-400 transition">{translations[language].objectivesTitle}</a>
+      <a href="#gallery" className="hover:text-blue-600 hover:text-blue-400 transition">{translations[language].MaquettesTitle}</a>
+      <a href="#contactUs" className="hover:text-blue-600 hover:text-blue-400 transition">{translations[language].ContactTitle}</a>
       
-      <button id="darkModeToggle" aria-label="Toggle dark mode" className={`text-blue-700 hover:text-green-600 ${darkMode ? 'text-white hover:text-green-400' : ''} transition focus:outline-none`} onClick={toggleDarkMode}>
+      <button id="darkModeToggle" aria-label="Toggle dark mode" className={`text-blue-700 hover:text-blue-600 ${darkMode ? 'text-white hover:text-blue-400' : ''} transition focus:outline-none`} onClick={toggleDarkMode}>
         <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${darkMode ? '' : 'hidden'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.07 6.07l-.7-.7M6.34 6.34l-.7-.7m12.02 12.02l-.7-.7M6.34 17.66l-.7-.7M12 7a5 5 0 100 10 5 5 0 000-10z" />
         </svg>
@@ -280,14 +302,14 @@ function App() {
   </nav>
 
   <div id="mobileMenu" className={`${isMobileMenuOpen ? 'flex' : 'hidden'} xl:hidden flex-col space-y-8 p-8  bg-gray-900 text-white shadow-md`} role="menu" aria-label="Menu mobile">
-    <a href="#home" className="hover:text-green-600 hover:text-green-400 transition text-sm" role="menuitem">{translations[language].heroTitle}</a>
-    <a href="#features" className="hover:text-green-600 hover:text-green-400 transition text-sm" role="menuitem">{translations[language].featuresTitle}</a>
-    <a href="#objectives" className="hover:text-green-600 hover:text-green-400 transition text-sm" role="menuitem">{translations[language].objectivesTitle}</a>
-    <a href="#gallery" className="hover:text-green-600 hover:text-green-400 transition text-sm" role="menuitem">Maquettes</a>
-    <a href="#contactUs" className="hover:text-green-600 hover:text-green-400 transition text-sm" role="menuitem">Contact</a>
+    <a href="#home" className="hover:text-blue-600 hover:text-blue-400 transition text-sm" role="menuitem">{translations[language].heroTitle}</a>
+    <a href="#features" className="hover:text-blue-600 hover:text-blue-400 transition text-sm" role="menuitem">{translations[language].featuresTitle}</a>
+    <a href="#objectives" className="hover:text-blue-600 hover:text-blue-400 transition text-sm" role="menuitem">{translations[language].objectivesTitle}</a>
+    <a href="#gallery" className="hover:text-blue-600 hover:text-blue-400 transition text-sm" role="menuitem">Maquettes</a>
+    <a href="#contactUs" className="hover:text-blue-600 hover:text-blue-400 transition text-sm" role="menuitem">Contact</a>
     <div className="  lg:justify-end md:justify-end flex items-center space-x-2">
        
-      <button id="darkModeToggle" aria-label="Toggle dark mode" className={`text-blue-700 hover:text-green-600 ${darkMode ? 'text-white hover:text-green-400' : ''} transition focus:outline-none`} onClick={toggleDarkMode}>
+      <button id="darkModeToggle" aria-label="Toggle dark mode" className={`text-blue-700 hover:text-blue-600 ${darkMode ? 'text-white hover:text-blue-400' : ''} transition focus:outline-none`} onClick={toggleDarkMode}>
         <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${darkMode ? '' : 'hidden'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.07 6.07l-.7-.7M6.34 6.34l-.7-.7m12.02 12.02l-.7-.7M6.34 17.66l-.7-.7M12 7a5 5 0 100 10 5 5 0 000-10z" />
         </svg>
@@ -307,7 +329,7 @@ function App() {
       <button className={`bg-blue-700 hover:bg-blue-600 text-sm  text-white font-bold px-2 py-1 rounded-full transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="registerButton" onClick={Registertoggle}>{translations[language].Registre}</button>
     </div>
   </div> {showLogin && <section id="login" className={`h-screen w-full py-20 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-50 '}`}>
-  <a href="#home" onClick={()=>setShowLogin(!showLogin)} className=" float-right mr-20 hover:text-green-600 hover:text-green-400 transition">✖ </a>
+  <a href="#home" onClick={()=>setShowLogin(!showLogin)} className=" float-right mr-20 hover:text-blue-600 hover:text-blue-400 transition">✖ </a>
     
     <div className="container mx-auto px-6 max-w-lg">
       <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
@@ -343,17 +365,17 @@ function App() {
         </div>
 
         <div className="mb-10 flex items-center justify-center">
-          <button type="submit" className="my-30  bg-blue-700 hover:bg-green-600 text-white font-bold py-2 px-10 rounded-full transition bg-blue-600 hover:bg-green-500">
+          <button type="submit" className="my-30  bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-10 rounded-full transition bg-blue-600 hover:bg-blue-500">
             {translations[language].ButtonLogin}
           </button>
-          <p className="text-green-600 font-semibold hidden" id="successMessage">Connexion réussie !</p>
+          <p className="text-blue-600 font-semibold hidden" id="successMessage">Connexion réussie !</p>
         </div>
       </form>
     </div>
   </section>}
   {showRegister && (
       <section id="register" className={`h-screen w-full py-20  ${darkMode ? ' bg-gray-800 text-white ' : 'bg-gray-50'}`}>
-          <a onClick={()=>setShowRegister(!showRegister)} href="#home" className=" float-right mr-20 hover:text-green-600 hover:text-green-400 transition">✖ </a>
+          <a onClick={()=>setShowRegister(!showRegister)} href="#home" className=" float-right mr-20 hover:text-blue-600 hover:text-blue-400 transition">✖ </a>
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className={`text-3xl font-extrabold text-gray-800 mb-8 text-center ${darkMode ? 'text-white' : ''}`}>
             {translations[language].RegistreTitle}
@@ -411,7 +433,7 @@ function App() {
             </div>
   
             <div className="mb-10 flex items-center justify-center">
-              <button type="submit" className="bg-blue-700 hover:bg-green-600 text-white font-bold py-2 px-10 rounded-full transition bg-blue-600 hover:bg-green-500">
+              <button type="submit" className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-10 rounded-full transition bg-blue-600 hover:bg-blue-500">
                 {translations[language].Registre}
               </button>
             </div>
@@ -426,14 +448,14 @@ function App() {
 
         <section id="home" className={`relative  text-white ${darkMode ? 'bg-gray-800 text-white' : ''}`}>
     
-          <div className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between">
+          <div className="container mx-auto px-6 py-2 flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 text-center md:text-left">
               <h1 className={`text-5xl md:text-5xl font-extrabold text-black  mb-4 leading-tight  ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="heroTitle">{translations[language].heroTitle}</h1>
               <p className={`text-lg md:text-xl font-extrabold text-black  mb-4 leading-tight  my-8   ${darkMode ? 'bg-gray-800 text-white' : ''}`} id="heroSubtitle">{translations[language].heroSubtitle}</p>
               <a href="#features" className={`inline-block bg-blue-400 text-white text-black my-10   font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-300 transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`} id="heroButton">{translations[language].heroButton}</a>
             </div>
             <div className="flex justify-end   ">
-              <img src="image.png" alt="Mockup de l'application mobile" style={{height:"500px", width:"600px"} }className=" rounded-lg shadow-lg" loading="lazy" />
+              <img src="image.png" alt="Mockup de l'application mobile" style={{height:"800px", width:"600px"} }className=" rounded-lg shadow-lg" loading="lazy" />
             </div>
           </div>
         </section>
@@ -448,7 +470,7 @@ function App() {
                 <img src="https://www.ionos.fr/digitalguide/fileadmin/DigitalGuide/E-Mail/e-mail-postfach-c.jpg" className={`h-full w-full rounded-lg  text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
                
                 </div>   
-                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-blue-400' : ''}`} id="feature1Title">{translations[language].feature1Title}</h3>
+                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? '' : ''}`} id="feature1Title">{translations[language].feature1Title}</h3>
                 <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature1Desc">{translations[language].feature1Desc}</p>
               </div>
               <div className={`bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
@@ -456,7 +478,7 @@ function App() {
               <img src="https://www.weblex.fr/sites/default/files/images/flux_actus/applimobile.jpg" className={` h-full w-full rounded-lg text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
                 </div>
 
-                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-green-400' : ''}`} id="feature2Title">{translations[language].feature2Title}</h3>
+                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? '' : ''}`} id="feature2Title">{translations[language].feature2Title}</h3>
                 <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature2Desc">{translations[language].feature2Desc}</p>
               </div>
             
@@ -464,7 +486,7 @@ function App() {
               <div className="w-full h-1/2">
               <img src="https://www.icoderzsolutions.com/blog/wp-content/uploads/2019/03/Intuitive-UI-For-Gratifying-UX-Blog-Post-.jpg" className={`h-full w-full rounded-lg text-blue-600 mb-2 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" />
               </div>
-                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? 'text-red-400' : ''}`} id="feature4Title">{translations[language].feature4Title}</h3>
+                <h3 className={`text-xl font-semibold text-blue-700 mb-4 ${darkMode ? '' : ''}`} id="feature4Title">{translations[language].feature4Title}</h3>
                 <p className={` ${darkMode ? 'text-gray-200' : 'text-gray-600'}`} id="feature4Desc">{translations[language].feature4Desc}</p>
               </div>
             </div>
@@ -483,17 +505,17 @@ function App() {
                 <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`} id="objective1Desc">{translations[language].objective1Desc}</p>
               </div>
               <div className={`p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : 'bg-white '}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-green-600 mb-4 ${darkMode ? 'text-green-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-blue-600 mb-4 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 0a3 3 0 013 3v5H9v-5a3 3 0 013-3z" />
                 </svg>
-                <h3 className={`text-xl font-semibold mb-2 text-green-700 ${darkMode ? 'text-green-400' : ''}`} id="objective2Title">{translations[language].objective2Title}</h3>
+                <h3 className={`text-xl font-semibold mb-2 text-blue-700 ${darkMode ? 'text-blue-400' : ''}`} id="objective2Title">{translations[language].objective2Title}</h3>
                 <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`}  id="objective2Desc">{translations[language].objective2Desc}</p>
               </div>
               <div className={`p-8 rounded-lg shadow hover:shadow-lg transition ${darkMode ? 'bg-gray-700 text-white' : 'bg-white '}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-yellow-600 mb-4 ${darkMode ? 'text-yellow-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`mx-auto h-16 w-16 text-blue-600 mb-4 ${darkMode ? 'text-blue-400' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 12V8l4 4m0 0l4-4m-4 4l-4-4" />
                 </svg>
-                <h3 className={`text-xl font-semibold mb-2 text-yellow-700 ${darkMode ? 'text-yellow-400' : ''}`} id="objective3Title">{translations[language].objective3Title}</h3>
+                <h3 className={`text-xl font-semibold mb-2 text-blue-700 ${darkMode ? 'text-blue-400' : ''}`} id="objective3Title">{translations[language].objective3Title}</h3>
                 <p className={`${darkMode ? 'text-gray-200' : 'text-gray-600 '}`}  id="objective3Desc">{translations[language].objective3Desc}</p>
               </div>
             </div>
@@ -520,8 +542,8 @@ function App() {
               </div>
               <div className="mb-4 flex items-center justify-between ">
 
-              <button type="submit" className="bg-blue-700 hover:bg-green-600 text-white font-bold py-2 float-right px-10 rounded-full transition bg-blue-600 hover:bg-green-500">{translations[language].ButtonEnvoyer}</button>
-              <p className=" text-green-600 font-semibold hidden" id="successMessage">Message envoyé avec succès !</p>
+              <button type="submit" className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 float-right px-10 rounded-full transition bg-blue-600 hover:bg-blue-500">{translations[language].ButtonEnvoyer}</button>
+              <p className=" text-blue-600 font-semibold hidden" id="successMessage">Message envoyé avec succès !</p>
               </div>
               
             </form>
